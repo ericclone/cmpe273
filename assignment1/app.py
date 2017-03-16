@@ -46,7 +46,7 @@ if __name__ == "__main__":
     if i >= 0:
         i += len(site) + 1
         repo = path[i:]
-        g = Github("eric.clone@gmail.com", "ppoo9900")
+        g = Github()
         r = g.get_repo(repo)
         try:
             s = r.size
