@@ -4,14 +4,17 @@ from flask import abort
 from sys import argv
 from base64 import b64decode
 from json import dumps
-from yaml import load as ymlload
+from yaml import load
 
 app = Flask(__name__)
 repo = ""
 
 @app.route("/")
+def dummy():
+    return r.size # should always be 1
+
 @app.route("/v1/<filename>")
-def load(filename):
+def retrieve(filename):
     if filename.endswith("yml"):
         content = get_content(filename)
         print filename
@@ -26,7 +29,7 @@ def load(filename):
         content = get_content(filename)
         print "Retrieved content is {}".format(content)
         if content :
-            return dumps(ymlload(content))
+            return dumps(load(content))
         else:
             abort(404)
     else:
