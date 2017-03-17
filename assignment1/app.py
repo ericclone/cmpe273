@@ -11,7 +11,7 @@ repo = ""
 
 @app.route("/")
 def dummy():
-    return r.size # should always be 1
+    return "{}".format(r.size) # should always be 1
 
 @app.route("/v1/<filename>")
 def retrieve(filename):
