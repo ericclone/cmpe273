@@ -1,0 +1,11 @@
+import boto3
+
+def lambda_handler(event, context):
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('Menus')
+    
+    response = table.delete_item(
+        Key=event
+    )
+
+    return 'OK'
